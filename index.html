@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WanderWorld - Travel Recommendations</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+    header {
+      background: url('https://source.unsplash.com/1600x500/?travel,nature') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    header h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+    nav {
+      background-color: #0066cc;
+      padding: 10px 0;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .destinations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 300px;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 15px;
+    }
+    .card-body h3 {
+      margin: 0 0 10px;
+    }
+    .card-body p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    footer {
+      background-color: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004999;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>WanderWorld</h1>
+    <p>Discover your next adventure</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Destinations</a>
+    <a href="#">Tours</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="container">
+    <h2>Top Travel Picks</h2>
+    <div class="destinations" id="destinations">
+      <!-- Cards will be added dynamically here -->
+    </div>
+    <div style="text-align:center; margin-top:30px;">
+      <button onclick="addDestination()">Add Random Destination</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 WanderWorld. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const destinations = [
+      {
+        name: "Paris, France",
+        image: "https://source.unsplash.com/300x200/?paris,eiffel",
+        description: "Experience the romance, cuisine, and culture of the City of Lights."
+      },
+      {
+        name: "Kyoto, Japan",
+        image: "https://source.unsplash.com/300x200/?kyoto,japan,temple",
+        description: "Explore ancient temples, serene gardens, and traditional tea houses."
+      },
+      {
+        name: "Cape Town, South Africa",
+        image: "https://source.unsplash.com/300x200/?cape-town,table-mountain",
+        description: "Breathtaking landscapes meet vibrant culture and adventure."
+      },
+      {
+        name: "Banff, Canada",
+        image: "https://source.unsplash.com/300x200/?banff,canada,mountains",
+        description: "Nature lovers will fall in love with pristine lakes and alpine peaks."
+      }
+    ];
+
+    function renderDestinations() {
+      const container = document.getElementById('destinations');
+      container.innerHTML = '';
+      destinations.forEach(dest => {
+        container.innerHTML += `
+          <div class="card">
+            <img src="${dest.image}" alt="${dest.name}">
+            <div class="card-body">
+              <h3>${dest.name}</h3>
+              <p>${dest.description}</p>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function addDestination() {
+      const sample = {
+        name: "Bali, Indonesia",
+        image: "https://source.unsplash.com/300x200/?bali,island,beach",
+        description: "Relax on stunning beaches or explore lush jungles and rice fields."
+      };
+      destinations.push(sample);
+      renderDestinations();
+    }
+
+    // Initial render
+    renderDestinations();
+  </script>
+
+</body>
+</html>
